@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Product Details</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.title %></h5>
+    <p class="card-text"><%= @product.description %></p>
+    <p class="card-text"><%= @product.price %></p>
+    <p class="card-text"><%= image_tag @product.image.url %></p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div><br>
+
+<%= link_to 'Edit', product_update_path(@product), method: :put, class: "btn btn-dark" %>
+<%= link_to 'Back', root_path, class: "btn btn-secondary" %>

@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    <h1>User Details</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= "Email: " + @user.email %></h5>
+    <% if @user.role == "0" %>
+      <p class="card-text"><%= "Role: User" %></p>
+    <% else %>
+      <p class="card-text"><%= "Role: Admin" %></p>
+    <% end %>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div><br>
+
+<%= link_to 'Edit', update_user_path(@user), method: :put, class: "btn btn-dark" %>
+<%= link_to 'Back', user_index_path, class: "btn btn-secondary" %>

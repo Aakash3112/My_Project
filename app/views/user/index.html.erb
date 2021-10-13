@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <!-- <th scope="col"></th> -->
+      <th style="text-align: center;">Email</th>
+      <th style="text-align: center;">Role</th>
+      <!-- <th style="text-align: center;">Description</th>
+      <th style="text-align: center;">Price</th> -->
+      <!-- <th style="text-align: center;">Image</th> -->
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% if @user.present? %>
+		<% @user.each do |u| %>			
+			<tr>
+		      <td><%= u.email %></td>
+		      <% if u.role == "0" %>
+		      	<td><%= "User" %></td>
+		      <% else %>
+		      	<td><%= "Admin" %></td>
+		      <% end %>	
+		      <td style="text-align: center;" ><%= link_to 'Show', show_user_path(u), class: "btn btn-outline-success" %></td>
+		      <!-- <td style="text-align: center;" ><%= link_to 'Edit', update_user_path(u), method: :put, class: "btn btn-outline-warning" %></td> -->
+		      <td style="text-align: center;" ><%= link_to 'Delete', delete_user_path(u), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></td>
+		    </tr>		    
+		<% end %>
+	<% end %>	
+  </tbody>
+</table><br>
+
+<%= link_to 'New User', new_user_path, class: "btn btn-secondary" %>

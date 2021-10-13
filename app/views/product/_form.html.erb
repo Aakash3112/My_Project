@@ -1,0 +1,36 @@
+<%= form_for @product do |pro| %>
+
+  <div class="field">
+    <%= pro.label :title %><br />
+    <%= pro.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= pro.label :description %><br />
+    <%= pro.text_field :description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= pro.label :price %><br />
+    <%= pro.number_field :price, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <% pro.label :user_id %><br />
+    <%= pro.number_field :user_id, id: :product_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+
+  <div class="field">
+    <%= pro.label :image %><br />
+    <%= pro.file_field :image%>
+  </div>  
+
+  <br>
+  <div class="actions">
+    <%= pro.submit class:"btn btn-secondary" %>
+  </div>
+  <br>
+
+<% end %>
+
+

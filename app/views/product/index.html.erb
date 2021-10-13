@@ -1,0 +1,66 @@
+<% if user_signed_in? %>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <!-- <th scope="col"></th> -->
+      <th style="text-align: center;">Title</th>
+      <th style="text-align: center;">Description</th>
+      <th style="text-align: center;">Price</th>
+      <% if current_user.role == "1" %>
+	      <th style="text-align: center;">User email</th>
+	      <th style="text-align: center;">Role</th>
+	      <th style="text-align: center;">User Id</th>
+      <% end %>
+      <!-- <th style="text-align: center;">Image</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% if @product.present? %>
+		<% @product.each do |pro| %>
+			<% if (pro.user == current_user) || (current_user.role == "1") %>
+				<tr>
+		      <td><%= pro.title %></td>
+		      <td><%= pro.description %></td>
+		      <td><%= pro.price %></td>
+		      <% if current_user.role == "1" %>
+			      <td><%= User.find(pro.user_id).email %></td>
+			      <% if User.find(pro.user_id).role == "1" %>
+			      	<td><%= "Admin" %></td>
+			      <% else %>
+			      	<td><%= "User" %></td>
+			      <% end %>
+			      <td><%= pro.user_id %></td>
+			    <% end %>  
+		      <!-- <td><% image_tag pro.image.url %></td> -->
+
+		      <td style="text-align: center;" ><%= link_to 'Show', product_show_path(pro), class: "btn btn-outline-success" %></td>
+		      <td style="text-align: center;" ><%= link_to 'Edit', product_update_path(pro), method: :put, class: "btn btn-outline-warning" %></td>
+		      <td style="text-align: center;" ><%= link_to 'Delete', destroy_product_path(pro), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></td>
+		    </tr>
+		  <% end %>  
+		<% end %>
+	<% end %>	
+  </tbody>
+</table><br>
+
+<%= paginate @product %>
+
+
+<%= link_to 'New product', product_create_path,method: :post, class: "btn btn-secondary" %>
+  
+<% else %>
+
+<h1>Sign In or Sign Up</h1>
+<h2>To continue</h2>
+
+<% end %>
+
+
+
+
+<!-- 
+<h1>Product#index</h1>
+<p>Find me in app/views/product/index.html.erb</p>
+ -->
