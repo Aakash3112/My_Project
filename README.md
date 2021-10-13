@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dependencies Required
 
-Things you may want to cover:
 
-* Ruby version
+Ruby:- 3.0.0
 
-* System dependencies
+Rails:- 6.1.4.1
 
-* Configuration
+Bundler:- 2.2.3
 
-* Database creation
+Node:- 10.17.2
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Database used:- mysql -> 8.0.26
